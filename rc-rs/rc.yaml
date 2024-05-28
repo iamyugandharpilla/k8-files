@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc-test 
+  namespace: dev 
+spec:
+  replicas: 3
+  selector:
+    type: monitoring
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: monitoring
+        tier: web
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:10.1.10
+        ports:
+        - containerPort: 3000

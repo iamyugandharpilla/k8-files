@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-test-nodeselector-nodename
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: deploy
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: deploy
+        tier: web
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:main-ubuntu
+        ports:
+        - containerPort: 3000
+      nodeName: worker3

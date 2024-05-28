@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-liveness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: deploy
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: deploy
+        tier: web
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:main-ubuntu
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+      nodeSelector:
+        tier: frontend

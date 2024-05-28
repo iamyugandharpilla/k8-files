@@ -1,0 +1,22 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: grafana-nginx-apache
+  namespace: dev
+  labels:
+    type: monitoring
+spec:
+  containers:
+  - name: grafana-container
+    image: grafana/grafana:10.1.10
+    ports:
+    - containerPort: 3000
+  - name: nginx
+    image: nginx:1.21.1
+    ports:
+    - containerPort: 80
+      protocol: TCP
+  - name: apache
+    image: httpd:latest
+    ports:
+    - containerPort: 80

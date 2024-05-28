@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-test 
+  namespace: dev 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: rs
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: rs
+        tier: web
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:10.1.10
+        ports:
+        - containerPort: 3000

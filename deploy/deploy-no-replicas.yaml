@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-test 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: deploy
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: deploy
+        tier: web
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:10.1.10
+        ports:
+        - containerPort: 3000

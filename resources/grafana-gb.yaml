@@ -1,0 +1,21 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: grafana-memory-gb
+  namespace: dev
+  labels:
+    type: monitoring
+spec:
+  containers:
+  - name: grafana-container
+    image: grafana/grafana:10.1.10
+    ports:
+    - containerPort: 3000
+    resources:
+      requests:
+        memory: 1000Mi
+        cpu: 3G
+      limits:
+        memory: 1500Mi
+        cpu: 4G
+

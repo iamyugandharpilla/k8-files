@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter 
+spec:
+  selector:
+    matchLabels:
+      type: ds
+  template:
+    metadata:
+      name: grafana
+      labels:
+        type: ds
+        tier: web
+    spec:
+      containers:
+      - name: node-container
+        image: quay.io/prometheus/node-exporter:latest
+        ports:
+        - containerPort: 9100
