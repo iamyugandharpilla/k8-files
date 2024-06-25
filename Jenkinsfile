@@ -9,11 +9,11 @@ pipeline {
         stage('parameter validation'){
             steps{
                  script{
-                    if ( ${params.PERSON} == '' ) {
-                echo 'please atleast pass one parameter'
+                    if ( "${params.ACTION}" == '' ) {
+                echo "please atleast pass one parameter"
             } else {
-                echo 'The option selected : (${params.PERSON}'
-            }                        
+                echo "The option selected : ${params.ACTION}"
+            }                 
                  }
             }
         }
