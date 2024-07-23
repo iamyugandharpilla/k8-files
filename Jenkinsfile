@@ -9,7 +9,7 @@ pipeline {
         stage('parameter validation'){
             steps{
                  script{
-                    if ( "${params.ACTION}" == '' ) {
+                    if ( "${params.ACTION}" == 'false' ) {
                 echo "please atleast pass one parameter"
             } else {
                 echo "The option selected : ${params.ACTION}"
@@ -23,7 +23,7 @@ pipeline {
                    return params.ACTION == 'apply'
                 } }
             steps {
-               sh 'kubectl apply -f deploy/deploy.yaml'
+               sh 'kubectl apply -f k8-files/deploy/deploy.yaml '
             }
         }
         stage('delete ') {
@@ -32,7 +32,7 @@ pipeline {
                 }
                 }
             steps {
-               sh 'kubectl delete -f deploy/deploy.yaml'
+               sh 'kubectl delete -f k8-files/deploy/deploy.yaml'
             }
         }
         
