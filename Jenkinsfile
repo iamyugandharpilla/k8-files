@@ -16,7 +16,7 @@ pipeline {
                    return params.ACTION == 'apply'
                 } }
             steps {
-               sh 'kubectl apply -f k8-files/deploy/deploy.yaml '
+               sh 'kubectl apply -f deploy/deploy.yaml'
             }
         }
         stage('delete ') {
@@ -25,7 +25,7 @@ pipeline {
                 }
                 }
             steps {
-               sh 'kubectl delete -f k8-files/deploy/deploy.yaml'
+               sh 'kubectl delete -f deploy/deploy.yaml'
             }
         }
         
