@@ -4,13 +4,7 @@ pipeline {
    
     parameters { choice(name: 'ACTION', choices: ['apply', 'delete'], description: 'Select the action to perform') }
 
-    stages {
-
-        
-                 
-            }
-        }
-               
+    stages{       
         stage('apply ') {
              when { expression { 
                    return params.ACTION == 'apply'
