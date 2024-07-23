@@ -6,15 +6,8 @@ pipeline {
 
     stages {
 
-        stage('parameter validation'){
-            steps{
-                 script{
-                    if ( "${params.ACTION}" == 'false' ) {
-                echo "please atleast pass one parameter"
-            } else {
-                echo "The option selected : ${params.ACTION}"
-            }                 
-                 }
+        
+                 
             }
         }
                
