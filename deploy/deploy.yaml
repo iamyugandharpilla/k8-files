@@ -19,5 +19,3 @@ spec:
         image: grafana/grafana:main-ubuntu
         ports:
         - containerPort: 3000
-      nodeSelector:
-        tier: frontend
